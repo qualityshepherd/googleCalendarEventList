@@ -104,19 +104,19 @@ function listEvents(events) {
  * @param {string} request url
  * @returns {obj} json object
  */
-function httpGet(url) {
+function httpGet(url, callback) {
     var oReq = new XMLHttpRequest();
     oReq.open("GET", url, true);
     oReq.onreadystatechange = function(oEvent) {
         if (oReq.readyState === 4 && oReq.status === 200) {
             // callback when we get response... 
-            listEvents(JSON.parse(oReq.responseText));
+            callback(JSON.parse(oReq.responseText));
         } else {
-            console.log("get response: ", oReq.statusText);
+            console.log("Response: ", oReq.status);
         }
     };
     oReq.send();
 }
 
-// build the request, make the async call, and callback with results...
-httpGet(request);
+// build the request, make the async call, and callback listEents with results...
+httpGet(request, listEvents);
