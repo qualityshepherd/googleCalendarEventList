@@ -2,6 +2,7 @@
 A simple Javascript script that lists the events for a public Google calendar, into an html page. 
 
 This script:
+
   • Lists future calendar events with a `date - summary` and a link to the event in gcal, but is easily customizable to include whatever you want. 
   • uses the JS native `XMLHttpRequest` to perform an async call to Google's Calendar API
 
