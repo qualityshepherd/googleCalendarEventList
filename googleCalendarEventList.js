@@ -48,7 +48,7 @@ function addZero(num) {
     if (num < 10) {
         num = "0" + num;
     }
-    return num;
+    return String(num);
 }
 
 /**
@@ -111,7 +111,7 @@ function httpGet(url, callback) {
     oReq.onreadystatechange = function(oEvent) {
         if (oReq.readyState === 4 && oReq.status === 200) {
             // callback when we get response... 
-            callback(JSON.parse(oReq.responseText));
+            return callback(JSON.parse(oReq.responseText));
         } else {
             console.log("Response: ", oReq.status);
         }
