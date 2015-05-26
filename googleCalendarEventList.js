@@ -54,7 +54,8 @@ function addZero(num) {
 /**
  * format a date string
  *
- * @returns string - formated date string for google's api: yyyy-mm-ddTHH:MM:ss-hh:MM
+ * @param {date object} 
+ * @returns {string} formated date string for google's api: yyyy-mm-ddTHH:MM:ss-hh:MM
  */
 function formatDateTime(now) {
     var mm = addZero(now.getMonth() + 1);
@@ -102,7 +103,7 @@ function listEvents(events) {
  * javascript native async requester...
  *
  * @param {string} request url
- * @returns {obj} json object
+ * @param {function} callback function to handle response
  */
 function httpGet(url, callback) {
     var oReq = new XMLHttpRequest();
