@@ -24,6 +24,20 @@ var API_KEY = '<YOUR_API_KEY>';
  */
 var CALENDAR_ID = '<YOUR_CALENDAR_ID>';
 
+/** current date object */
+var now = new Date();
+
+/**
+ * Build a Google Calendar API http request 
+ * {@link https://developers.google.com/google-apps/calendar/v3/reference/events}
+ */
+var request = 'https://www.googleapis.com/calendar/v3/calendars/' +
+        CALENDAR_ID +
+        '/events?fields=items(description%2Csummary%2Clocation%2Cstart%2ChtmlLink)&timeMin=' +
+        getDateTimeOfNow(now) +
+        '&key=' +
+        API_KEY;
+
 /**
  * add a leading zero to a number
  *
@@ -42,8 +56,7 @@ function addZero(num) {
  *
  * @returns string - formated date string for google's api: yyyy-mm-ddTHH:MM:ss-hh:MM
  */
-function getDateTimeOfNow() {
-    var now = new Date();
+function getDateTimeOfNow(now) {
     var mm = addZero(now.getMonth() + 1);
     var dd = addZero(now.getDate());
     var yyyy = now.getFullYear();
@@ -52,21 +65,6 @@ function getDateTimeOfNow() {
     var MM = addZero(now.getMinutes());
     var SS = addZero(now.getSeconds());
     return [yyyy, mm, dd].join('-') + 'T' + [HH, MM, SS].join(':') + '-' + [hh, MM].join(':');
-}
-
-/**
- * build a {@link https://developers.google.com/google-apps/calendar/v3/reference/events|google calendar api} request url
- *
- * @returns {string} request url
- */
-function buildRequest() {
-    var request = 'https://www.googleapis.com/calendar/v3/calendars/' +
-        CALENDAR_ID +
-        '/events?fields=items(description%2Csummary%2Clocation%2Cstart%2ChtmlLink)&timeMin=' +
-        getDateTimeOfNow() +
-        '&key=' +
-        API_KEY;
-    return request;
 }
 
 /**
@@ -114,11 +112,11 @@ function httpGet(url) {
             // callback when we get response... 
             listEvents(JSON.parse(oReq.responseText));
         } else {
-            console.log("Request error: ", oReq.statusText);
+            console.log("get response: ", oReq.statusText);
         }
     };
     oReq.send();
 }
 
 // build the request, make the async call, and callback with results...
-httpGet(buildRequest());
+httpGet(request);
