@@ -34,7 +34,7 @@ var now = new Date();
 var request = 'https://www.googleapis.com/calendar/v3/calendars/' +
         CALENDAR_ID +
         '/events?fields=items(description%2Csummary%2Clocation%2Cstart%2ChtmlLink)&timeMin=' +
-        getDateTimeOfNow(now) +
+        formatDateTime(now) +
         '&key=' +
         API_KEY;
 
@@ -56,7 +56,7 @@ function addZero(num) {
  *
  * @returns string - formated date string for google's api: yyyy-mm-ddTHH:MM:ss-hh:MM
  */
-function getDateTimeOfNow(now) {
+function formatDateTime(now) {
     var mm = addZero(now.getMonth() + 1);
     var dd = addZero(now.getDate());
     var yyyy = now.getFullYear();
