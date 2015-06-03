@@ -26,4 +26,5 @@ The script in it's current form will output something like the following:
 
 ## Tests:
 Yeah, I just can't release something without tests... that said, I ran out of time and abandoned them for now (typical). Still, to run them:
+
 1. `karma start`
