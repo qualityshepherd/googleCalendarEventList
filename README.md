@@ -9,7 +9,7 @@ A simple Javascript script that lists the events for a public Google calendar, i
 ## USAGE:
   1. Download/Clone/Copy the script: `git clone https://github.com/qualityshepherd/googleCalendarEventList.git`
   2. Edit the `API_KEY` and `CALENDAR_ID` to match your settings
-  2. Add script to your html page: `<script src="gcal.js"></script>``
+  2. Add script to your html page: `<script src="googleCalendarEventListSpec.js"></script>``
   3. create a div in your html page where you want your events listed, with an id 'cal': `<div id="cal">`
   4. Profit?
 
@@ -23,3 +23,7 @@ The script in it's current form will output something like the following:
 	2015-08-01 - The Bluegrass Cavaliers - Private Wedding - Eagle WI
 	2015-08-02 - The BriarPickers w/ Steve Rosen - Old-Time Dance - Madison, WI
 ```
+
+## Tests:
+Yeah, I just can't release something without tests... that said, I ran out of time and abandoned them for now (typical). Still, to run them:
+1. `karma start`
